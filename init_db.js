@@ -2,6 +2,7 @@
 // `brew services start mysql`
 // to stop mysql server:
 // `brew services stop mysql`
+// access mysql CLI with 'mysql -u root`
 
 let mysql = require('mysql2');
 let fs = require('fs');
