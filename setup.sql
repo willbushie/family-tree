@@ -35,6 +35,6 @@ SET @mother_id = LAST_INSERT_ID();
 
 INSERT INTO people
 (fname, lname, mother_id, father_id, date_of_birth, sex)
-VALUES ('Jack', 'Doe', @mother_id, @father_id, '2008-11-03', 'male');
+VALUES ('Jack', 'Doe', @mother_id, @father_id, '2018-11-03', 'male');
 
 
