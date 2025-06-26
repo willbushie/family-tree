@@ -18,7 +18,12 @@ let con = mysql.createConnection({
     multipleStatements: true
 });
 
-// basically an API call to `/`
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+});
+
+
+// API call to GET people information
 app.get('/api/people', (req, res) => {
     //res.send('Hello World!')
 
@@ -26,14 +31,9 @@ app.get('/api/people', (req, res) => {
         if (err) throw err;
         con.query('SELECT fname, lname, date_of_birth, father_id, mother_id FROM people',
             function (err, result, fields) {
-            if (err) throw err;
-            //console.log(result)
-            res.send(result)
-        });
+                if (err) throw err;
+                //console.log(result)
+                res.send(result)
+            });
     });
 });
-
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-});
-
