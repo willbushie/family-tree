@@ -10,17 +10,21 @@
 
   <h2>Add New Person</h2>
 
-  <form id="add-person-form">
-    <input type="text" id="fname" placeholder="First Name" required><br>
-    <input type="text" id="lname" placeholder="Last Name" required><br>
-    <input type="date" id="dob" placeholder="Date of Birth" required><br>
-    <select id="sex" required>
-      <option value="">Select Sex</option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select><br>
-    <button type="submit">Add</button>
-  </form>
+  <button>Add Person</button>
+
+  <div>
+    <form id="add-person-form">
+      <input type="text" id="fname" placeholder="First Name" required><br>
+      <input type="text" id="lname" placeholder="Last Name" required><br>
+      <input type="date" id="dob" placeholder="Date of Birth" required><br>
+      <select id="sex" required>
+        <option value="">Select Sex</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select><br>
+      <button type="submit">Add</button>
+    </form>
+  </div>
 
   <div id="people-container"></div>
 
