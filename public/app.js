@@ -1,3 +1,4 @@
+// fetch and display people from the database
 fetch('/api/people')
     .then(response => response.json())
     .then(data => {
@@ -30,4 +31,33 @@ fetch('/api/people')
             container.appendChild(card);
         });
     });
+
+// add a person to the database
+document.getElementById('add-person-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const personData = {
+        fname: document.getElementById('fname').value,
+        lname: document.getElementById('lname').value,
+        date_of_birth: document.getElementById('dob').value,
+        sex: document.getElementById('sex').value
+    };
+
+    fetch('/api/people', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(personData)
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Person added:', result);
+        alert('Person added successfully!');
+        location.reload();
+    })
+    .catch(error => {
+        console.error('Error adding person:', error);
+    });
+});
 

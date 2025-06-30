@@ -6,6 +6,9 @@ const port = 3000;
 // Serve static frontend files from /public
 app.use(express.static('public'));
 
+//
+app.use(express.json());
+
 app.listen(port, () => {
   console.log(`App running at http://localhost:${port}`);
 });
@@ -37,3 +40,20 @@ app.get('/api/people', (req, res) => {
             });
     });
 });
+
+
+// API add new perosn to database
+app.post('/api/people', (req, res) => {
+    const { fname, lname, date_of_birth, sex } = req.body;
+
+    if (!fname || !lname || !date_of_birth || !sex) {
+        return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const sql = 'INSERT INTO people (fname, lname, date_of_birth, sex) VALUES (?, ?, ?, ?)';
+    con.query(sql, [fname, lname, date_of_birth, sex], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ message: 'Person added', id: result.insertId });
+    });
+});
+
